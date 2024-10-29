@@ -1,0 +1,62 @@
+<p>header works!</p>
+<!-- {{}} this is used for string interpolation -->
+<h1>{{title}}</h1>
+<h3>{{5+4}}</h3>
+
+<!-- Property binding -->
+ <!-- <img src="{{imgUrl}}" alt=""> -->
+ <img [src]="imgUrl" alt="">
+<!-- difference between string interpolation and property binding -->
+ <button disabled="{{isDisabled}}">Disable using string interpolation</button>
+ <button  [disabled]="isDisabled">Disable using Property binding</button>
+
+ <!--  class binding  -->
+   <button [class.active]="isActive">Click Me</button>
+   <!-- Use two  class binding for condition -->
+<div>
+    <button [class.active]="isActive" [class.no-active]="!isActive"
+    [class.active-border]="isActive" [class.no-.active-border]="!isActive">Click me</button>
+</div>
+<!-- class binding with string -->
+<button [class.apple]="fruitName=='apple'">Fruit Name</button>
+
+<!-- style binding -->
+ <div>
+    <button [style.background]="isTrue?'red':'green'"> style binding</button>
+ </div>
+ <div>
+    <!-- Multiple style binding -->
+    <button [style.background]="isTrue?'orange':'green'"
+    [style.border]="isTrue ?'13px solid yellow':'13px solid pink'"> style binding</button>
+ </div>
+
+ <!-- Event binding -->
+<div>
+    <button (click)="clickButton()">Event binding</button>
+</div>
+
+<div>
+    <input type="text" (keyup)="keyEnter()">
+</div>
+<!-- Event filtering -->
+ <div>
+    <input type="text" (keyup)="keyEntery($event)">
+ </div>
+
+ <div>
+    <input type="text" (keyUp.enter)="keyFlitering()">
+ </div>
+
+<!-- Template variable  -->
+
+ <input type="text" (keyup.a)="keyFliter(user)" #user placeholder="input" id="userInput">
+
+
+ <!-- Two way binding  -->
+
+ <!-- Long approach -->
+  <input type="text" [value]="userName"  #username (keyup.enter)="updateUserName(username)" >
+
+  <!-- short approach -->
+<input type="text" [(ngModel)]="userLastName">
+<h3>{{userLastName}}</h3>
